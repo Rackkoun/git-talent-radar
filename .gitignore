@@ -1,0 +1,78 @@
+# ==============================================================================
+# GitTalentRadar Global & OS Files
+# ==============================================================================
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# ==============================================================================
+# Frontend (React, Vite, Node)
+# ==============================================================================
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+frontend/.eslintcache
+
+# ==============================================================================
+# Backend & ML (FastAPI, Python, Pytest)
+# ==============================================================================
+# Python bytecode
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+
+# Environments
+backend/.venv/
+venv/
+ENV/
+env/
+.env
+backend/.env
+
+# Testing & Coverage
+backend/.pytest_cache/
+.pytest_cache/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# ==============================================================================
+# MLOps, Data & Orchestration (MLflow, ZenML, Airflow, DVC)
+# ==============================================================================
+# MLflow local runs and artifacts
+mlruns/
+mlruns.db
+
+# ZenML local metadata
+.zen/
+**/__zenml__/
+
+# Airflow local engine files
+
+# DVC local caches (ignore only the massive data caches)
+
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# ==============================================================================
+# Infrastructure & Gateway (Docker, Minikube, Nginx)
+# ==============================================================================
+infra/nginx/logs/
+*.tar
+*.tar.gz
