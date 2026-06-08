@@ -8,13 +8,13 @@ type Props = {
 export default function GitHubUserCard({login, avatarUrl}: Props){
     return (
         <Link to={`/users/${login}`}>
-            <Card className="w-72 cursor-pointer hover:shadow-lg transition">
+            <Card className="w-72 cursor-pointer hover:shadow-lg transition bg-white text-black">
                 <CardContent className="flex flex-col items-center p-6">
                     <img 
                         src={avatarUrl}
                         alt={login}
                         className="h-24 w-24 rounded-full"/>
-                    <h2 className="mt-4 font-semibold text-lg">
+                    <h2 className="mt-4 font-semibold text-foreground text-lg">
                         {login}
                     </h2>
                 </CardContent>
