@@ -1,0 +1,21 @@
+fastapi==0.136.3
+httpx==0.28.1
+pydantic==2.13.4
+pydantic-settings==2.14.1
+
+starlette==1.2.1
+typing-inspection==0.4.2
+typing_extensions==4.15.0
+uvicorn==0.48.0
+
+# Testing
+pytest == 9.0.3
+pytest-asyncio == 1.4.0
+pytest-cov==7.1.0
+respx==0.23.1
+
+# Lint & Format
+ruff==0.15.16
+
+# Dev
+python-dotenv==1.2.2
