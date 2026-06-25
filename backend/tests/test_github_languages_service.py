@@ -1,7 +1,8 @@
 # backend/tests/test_github_languages_service.py
 
-import pytest
 from unittest.mock import AsyncMock
+
+import pytest
 
 from app.services.github_service import GitHubService
 
@@ -11,12 +12,7 @@ async def test_language_percentages():
 
     service = GitHubService()
 
-    service.client.get_repositories = AsyncMock(
-        return_value=[
-            {"name": "repo1"},
-            {"name": "repo2"}
-        ]
-    )
+    service.client.get_repositories = AsyncMock(return_value=[{"name": "repo1"}, {"name": "repo2"}])
 
     async def fake_languages(username, repo):
 
@@ -27,9 +23,7 @@ async def test_language_percentages():
 
     service.client.get_repo_languages = fake_languages
 
-    result = await service.get_languages(
-        "Rackkoun"
-    )
+    result = await service.get_languages("Rackkoun")
 
     assert result[0]["name"] == "Python"
     assert result[0]["bytes"] == 1500
@@ -44,9 +38,7 @@ async def test_language_percentages():
 async def test_language_repos():
 
     service = GitHubService()
-    service.client.get_repositories = AsyncMock(
-        return_value=[{"name": "empty_repo"}]
-    )
+    service.client.get_repositories = AsyncMock(return_value=[{"name": "empty_repo"}])
 
     service.client.get_repo_languages = AsyncMock(return_value={})
 
@@ -58,12 +50,8 @@ async def test_language_repos():
 @pytest.mark.asyncio
 async def test_language_single_repo():
     service = GitHubService()
-    service.client.get_repositories = AsyncMock(
-        return_value=[{"name": "repo1"}]
-    )
-    service.client.get_repo_languages = AsyncMock(
-        return_value={"Python": 7000}
-    )
+    service.client.get_repositories = AsyncMock(return_value=[{"name": "repo1"}])
+    service.client.get_repo_languages = AsyncMock(return_value={"Python": 7000})
 
     result = await service.get_languages("Rackkoun")
 

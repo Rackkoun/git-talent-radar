@@ -2,23 +2,24 @@
 
 # from fastapi.testclient import TestClient
 from unittest.mock import AsyncMock
+
 from app.api.v1.github import service
 
+
 def test_get_user(client):
-    
-    service.get_user = AsyncMock(
-        return_value = {"id": 1, "login": "Rackkoun"}
-    )
+
+    service.get_user = AsyncMock(return_value={"id": 1, "login": "Rackkoun"})
 
     response = client.get("/api/v1/github/users/Rackkoun")
 
     assert response.status_code == 200
     assert response.json()["login"] == "Rackkoun"
 
+
 def test_get_user_repositories(client):
 
     service.get_repositories = AsyncMock(
-        return_value = [
+        return_value=[
             {"name": "repo1"},
             {"name": "repo2"},
         ]
@@ -28,9 +29,10 @@ def test_get_user_repositories(client):
     assert response.status_code == 200
     assert len(response.json()) == 2
 
+
 def test_get_featured_users(client):
     service.get_user = AsyncMock(
-        side_effect = [
+        side_effect=[
             {"login": "torvalds"},
             {"login": "tj"},
             {"login": "Rackkoun"},
@@ -40,7 +42,7 @@ def test_get_featured_users(client):
 
     assert response.status_code == 200
     data = response.json()
-    
+
     assert len(data) == 3
     assert data[0]["login"] == "torvalds"
     assert data[1]["login"] == "tj"
@@ -48,9 +50,10 @@ def test_get_featured_users(client):
 
     assert service.get_user.await_count == 3
 
+
 def test_get_languages(client):
     service.get_languages = AsyncMock(
-        return_value = [
+        return_value=[
             {"name": "Python", "bytes": 700, "percentage": 70},
             {"name": "SQL", "bytes": 300, "percentage": 30},
         ]

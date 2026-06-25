@@ -34,6 +34,12 @@ frontend/.eslintcache
 **/*.py[cod]
 **/*$py.class
 
+# Packaging
+eggs/
+.eggs/
+lib/
+*.egg-info/
+
 # Environments
 backend/.venv/
 venv/
@@ -46,10 +52,12 @@ backend/.env
 backend/.pytest_cache/
 .pytest_cache/
 htmlcov/
+coverage
 .coverage
 .coverage.*
 coverage.xml
 *.cover
+.ruff_cache
 
 # ==============================================================================
 # MLOps, Data & Orchestration (MLflow, ZenML, Airflow, DVC)

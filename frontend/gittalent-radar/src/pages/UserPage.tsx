@@ -137,7 +137,7 @@ export default function UserPage() {
 
         <div className="space-y-5">
 
-          {languages.map((lang: any) => (
+          {languages.map((lang: LanguageStat) => (
 
             <div key={lang.name}>
 

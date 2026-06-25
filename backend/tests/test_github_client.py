@@ -2,14 +2,16 @@
 
 import pytest
 import respx
-from httpx import Response
+from httpx import HTTPStatusError, Response
 
 from app.clients.github_client import GitHubClient
 from app.core.config import settings
 
+
 @pytest.fixture
 def client():
     return GitHubClient()
+
 
 @respx.mock
 async def test_get_user_success(client):
@@ -20,6 +22,7 @@ async def test_get_user_success(client):
     assert result["login"] == "Rackkoun"
     assert route.called
 
+
 @respx.mock
 async def test_get_user_with_token(client, monkeypatch):
     monkeypatch.setattr(settings, "github_token", "fake_token")
@@ -29,6 +32,7 @@ async def test_get_user_with_token(client, monkeypatch):
     await client.get_user("test")
     assert route.calls.last.request.headers["Authorization"] == "Bearer fake_token"
 
+
 @respx.mock
 async def test_get_repositories(client):
     route = respx.get("https://api.github.com/users/Rackkoun/repos").mock(
@@ -37,6 +41,7 @@ async def test_get_repositories(client):
     result = await client.get_repositories("Rackkoun")
     assert len(result) == 2
     assert route.called
+
 
 @respx.mock
 async def test_get_repo_languages(client):
@@ -48,11 +53,12 @@ async def test_get_repo_languages(client):
     assert result["SQL"] == 3000
     assert route.called
 
+
 @respx.mock
 async def test_get_user_not_found(client):
     respx.get("https://api.github.com/users/unknow").mock(
         return_value=Response(404, json={"message": "Not Found"})
     )
 
-    with pytest.raises(Exception):
+    with pytest.raises(HTTPStatusError):
         await client.get_user("unknow")

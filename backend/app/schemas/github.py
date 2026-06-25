@@ -1,6 +1,7 @@
 # backend/app/schemas/github.py
 from pydantic import BaseModel
 
+
 class GithubUser(BaseModel):
     id: int
     login: str
@@ -18,6 +19,7 @@ class GithubUserDetails(BaseModel):
     followers: int
     following: int
     public_repos: int
+
 
 class LanguagesStat(BaseModel):
     name: str
