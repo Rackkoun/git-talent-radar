@@ -45,7 +45,7 @@ jobs:
   frontend-tests:
     name: Frontend Tests & Coverage
     runs-on: ubuntu-latest
-    default:
+    defaults:
       run:
         working-directory: ./frontend/gittalent-radar
     
