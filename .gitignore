@@ -16,15 +16,15 @@ Thumbs.db
 # ==============================================================================
 # Frontend (React, Vite, Node)
 # ==============================================================================
-frontend/node_modules/
-frontend/dist/
-frontend/build/
-frontend/.env
-frontend/.env.local
-frontend/.env.development.local
-frontend/.env.test.local
-frontend/.env.production.local
-frontend/.eslintcache
+frontend/gittalent-radar/node_modules/
+frontend/gittalent-radar/dist/
+frontend/gittalent-radar/build/
+frontend/gittalent-radar/.env
+frontend/gittalent-radar/.env.local
+frontend/gittalent-radar/.env.development.local
+frontend/gittalent-radar/.env.test.local
+frontend/gittalent-radar/.env.production.local
+frontend/gittalent-radar/.eslintcache
 
 # ==============================================================================
 # Backend & ML (FastAPI, Python, Pytest)
